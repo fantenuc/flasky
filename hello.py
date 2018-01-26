@@ -37,3 +37,7 @@ def index():
         session['name'] = form.name.data
         return redirect(url_for('index'))
     return render_template('index.html', form=form, name=session.get('name'))
+
+
+if __name__ == "__main__":
+    app.run(use_reloader=True, debug=True)
