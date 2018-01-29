@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, redirect, url_for, flash
+from flask import Flask, render_template, session, redirect, url_for, flash, request
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_wtf import FlaskForm
@@ -37,6 +37,17 @@ def index():
         session['name'] = form.name.data
         return redirect(url_for('index'))
     return render_template('index.html', form=form, name=session.get('name'))
+
+@app.route('/flavors', methods=['GET'])
+def flavors():
+    title_var = 'Ice Cream Flavors' # Name of Page
+    options = ['Chocolate', 'Vanilla', 'Strawberry', 'Coffee']
+    if request.method == 'GET':
+        input_dict = dict(request.args)
+        flavor_options = []
+        for key, value in input_dict.items():
+            flavor_options.append(key)
+    return render_template('icecream.html', title=title_var, flavors=flavor_options)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,29 @@
+<html>
+<h1>{{ title }}</h1>
+
+<br>
+<ul>
+{% for item in lst_stuff %}
+    <li>{{ item }}</li>
+{% endfor %}
+</ul>
+
+<br>
+
+<h2>Flavors selected</h2>
+<ul>
+{% for each in flavors %}
+    <li>{{ each }}</li>
+{% endfor %}
+</ul>
+
+<form action="{{ url_for('flavors') }}" method="GET">
+    Select the ice cream flavors you want.<br>
+    <input type="checkbox" name="chocolate" value="chocolate">Chocolate<br>
+    <input type="checkbox" name="vanilla" value="vanilla">Vanilla<br>
+    <input type="checkbox" name="strawberry" value="strawberry">Strawberry<br>
+    <input type="checkbox" name="coffee" value="coffee">Coffee<br>
+    <input type="submit" value="Submit">
+</form>
+
+</html>
